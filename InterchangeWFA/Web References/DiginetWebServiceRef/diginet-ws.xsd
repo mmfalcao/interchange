@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://webservice.diginet.digicon.com.br/" targetNamespace="http://webservice.diginet.digicon.com.br/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DigiconBusinessViolation" type="tns:DigiconBusinessViolation" />
+  <xs:complexType name="colaboradorRemoteOut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoBarras" type="xs:string" />
+      <xs:element minOccurs="0" name="empresa" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:long" />
+      <xs:element minOccurs="0" name="matricula" type="xs:string" />
+      <xs:element minOccurs="0" name="mifare" type="xs:string" />
+      <xs:element minOccurs="0" name="nome" type="xs:string" />
+      <xs:element minOccurs="0" name="pis" type="xs:string" />
+      <xs:element minOccurs="0" name="rfid" type="xs:string" />
+      <xs:element minOccurs="0" name="setor" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DigiconBusinessViolation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="biometriaRemoteOut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="biometriaSagem1" type="xs:string" />
+      <xs:element minOccurs="0" name="biometriaSagem2" type="xs:string" />
+      <xs:element minOccurs="0" name="pis" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="empresaRemoteOut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cei" type="xs:string" />
+      <xs:element minOccurs="0" name="cidade" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:long" />
+      <xs:element minOccurs="0" name="identificacao" type="xs:string" />
+      <xs:element minOccurs="0" name="nome" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoIdentificacao" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="monitoringRemoteOut">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="device" type="tns:deviceVO" />
+      <xs:element minOccurs="0" name="errorStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="idDevice" type="xs:long" />
+      <xs:element minOccurs="0" name="idEmployee" type="xs:long" />
+      <xs:element minOccurs="0" name="idMonitoring" type="xs:long" />
+      <xs:element minOccurs="0" name="insertData" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element minOccurs="0" name="processData" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="status" type="xs:int" />
+      <xs:element minOccurs="0" name="taskId" type="xs:int" />
+      <xs:element minOccurs="0" name="userId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deviceVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="active" type="xs:int" />
+      <xs:element minOccurs="0" name="barcode" type="xs:int" />
+      <xs:element minOccurs="0" name="commType" type="xs:int" />
+      <xs:element minOccurs="0" name="company" type="tns:companyVO" />
+      <xs:element minOccurs="0" name="dateLastAuthentication" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="dateLastUpdate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="deviceType" type="xs:int" />
+      <xs:element minOccurs="0" name="firmwareVersion" type="xs:string" />
+      <xs:element minOccurs="0" name="flashTotal" type="xs:int" />
+      <xs:element minOccurs="0" name="flashUsed" type="xs:int" />
+      <xs:element minOccurs="0" name="gateway" type="xs:string" />
+      <xs:element minOccurs="0" name="idCompany" type="xs:long" />
+      <xs:element minOccurs="0" name="idDevice" type="xs:long" />
+      <xs:element minOccurs="0" name="idPlace" type="xs:long" />
+      <xs:element minOccurs="0" name="insertData" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ip" type="xs:string" />
+      <xs:element minOccurs="0" name="mifare" type="xs:int" />
+      <xs:element minOccurs="0" name="mrp" type="xs:string" />
+      <xs:element minOccurs="0" name="mrpTotal" type="xs:int" />
+      <xs:element minOccurs="0" name="mrpUsed" type="xs:int" />
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element minOccurs="0" name="netmask" type="xs:string" />
+      <xs:element minOccurs="0" name="place" type="tns:placeVO" />
+      <xs:element minOccurs="0" name="port" type="xs:int" />
+      <xs:element minOccurs="0" name="prtLevel" type="xs:string" />
+      <xs:element minOccurs="0" name="prtRim" type="xs:int" />
+      <xs:element minOccurs="0" name="prtTickets" type="xs:int" />
+      <xs:element minOccurs="0" name="prtVersion" type="xs:string" />
+      <xs:element minOccurs="0" name="qtBio" type="xs:int" />
+      <xs:element minOccurs="0" name="qtCard" type="xs:int" />
+      <xs:element minOccurs="0" name="qtEmployee" type="xs:int" />
+      <xs:element minOccurs="0" name="regType2" type="xs:int" />
+      <xs:element minOccurs="0" name="regType3" type="xs:int" />
+      <xs:element minOccurs="0" name="regType4" type="xs:int" />
+      <xs:element minOccurs="0" name="regType5" type="xs:int" />
+      <xs:element minOccurs="0" name="rfid" type="xs:int" />
+      <xs:element minOccurs="0" name="sagem" type="xs:int" />
+      <xs:element minOccurs="0" name="status" type="xs:int" />
+      <xs:element minOccurs="0" name="suprema" type="xs:int" />
+      <xs:element minOccurs="0" name="tmReconnect" type="xs:int" />
+      <xs:element minOccurs="0" name="tmTimeout" type="xs:int" />
+      <xs:element minOccurs="0" name="updateData" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="userInsertId" type="xs:long" />
+      <xs:element minOccurs="0" name="userUpdateId" type="xs:long" />
+      <xs:element minOccurs="0" name="validation" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="companyVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cei" type="xs:string" />
+      <xs:element minOccurs="0" name="city" type="xs:string" />
+      <xs:element minOccurs="0" name="cpfCnpj" type="xs:string" />
+      <xs:element minOccurs="0" name="idCompany" type="xs:long" />
+      <xs:element minOccurs="0" name="insertData" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element minOccurs="0" name="state" type="xs:string" />
+      <xs:element minOccurs="0" name="type" type="xs:int" />
+      <xs:element minOccurs="0" name="updateData" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="userInsertId" type="xs:long" />
+      <xs:element minOccurs="0" name="userUpdateId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="placeVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fusoHorario" type="tns:fusoHorarioVO" />
+      <xs:element minOccurs="0" name="fusoHorarioId" type="xs:int" />
+      <xs:element minOccurs="0" name="horarioVerao" type="xs:int" />
+      <xs:element minOccurs="0" name="id" type="xs:long" />
+      <xs:element minOccurs="0" name="insertData" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element minOccurs="0" name="updateData" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="userInsertId" type="xs:long" />
+      <xs:element minOccurs="0" name="userUpdateId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fusoHorarioVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="descricao" type="xs:string" />
+      <xs:element minOccurs="0" name="diferencaHora" type="xs:int" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dispositivoRemoteOut">
+    <xs:sequence>
+      <xs:element name="codigoBarras" type="xs:boolean" />
+      <xs:element minOccurs="0" name="dateLastUpdate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="empresa" type="xs:string" />
+      <xs:element minOccurs="0" name="firmwareVersion" type="xs:string" />
+      <xs:element minOccurs="0" name="flashTotal" type="xs:int" />
+      <xs:element minOccurs="0" name="flashUsed" type="xs:int" />
+      <xs:element minOccurs="0" name="id" type="xs:long" />
+      <xs:element minOccurs="0" name="ip" type="xs:string" />
+      <xs:element minOccurs="0" name="local" type="xs:string" />
+      <xs:element name="mifare" type="xs:boolean" />
+      <xs:element minOccurs="0" name="mrpTotal" type="xs:int" />
+      <xs:element minOccurs="0" name="mrpUsed" type="xs:int" />
+      <xs:element minOccurs="0" name="nome" type="xs:string" />
+      <xs:element minOccurs="0" name="nrp" type="xs:string" />
+      <xs:element minOccurs="0" name="qtBio" type="xs:int" />
+      <xs:element minOccurs="0" name="qtCard" type="xs:int" />
+      <xs:element minOccurs="0" name="qtEmployee" type="xs:int" />
+      <xs:element minOccurs="0" name="regType2" type="xs:int" />
+      <xs:element minOccurs="0" name="regType3" type="xs:int" />
+      <xs:element minOccurs="0" name="regType4" type="xs:int" />
+      <xs:element minOccurs="0" name="regType5" type="xs:int" />
+      <xs:element name="rfid" type="xs:boolean" />
+      <xs:element name="sagem" type="xs:boolean" />
+      <xs:element name="suprema" type="xs:boolean" />
+      <xs:element minOccurs="0" name="validacaoBiometrica" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="colaboradoresConsultaRemoteOut">
+    <xs:sequence>
+      <xs:element name="biometriaSagem1" type="xs:boolean" />
+      <xs:element name="biometriaSagem2" type="xs:boolean" />
+      <xs:element minOccurs="0" name="id" type="xs:long" />
+      <xs:element minOccurs="0" name="nome" type="xs:string" />
+      <xs:element minOccurs="0" name="pis" type="xs:string" />
+      <xs:element minOccurs="0" name="total" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="monitoringRemoteOutArray" final="#all">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="item" nillable="true" type="tns:monitoringRemoteOut" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="colaboradoresConsultaRemoteOutArray" final="#all">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="item" nillable="true" type="tns:colaboradoresConsultaRemoteOut" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

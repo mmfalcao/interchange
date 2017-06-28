@@ -1,0 +1,943 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://webservice.diginet.digicon.com.br/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="DigiNetWSService" targetNamespace="http://webservice.diginet.digicon.com.br/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://10.104.30.12:8080/diginet2/diginet-ws?xsd=1" namespace="http://webservice.diginet.digicon.com.br/" />
+    </xsd:schema>
+  </types>
+  <message name="insereLocal">
+    <part name="nome" type="xsd:string" />
+    <part name="utilizaHorarioVerao" type="xsd:int" />
+    <part name="idFusoHorario" type="xsd:int" />
+  </message>
+  <message name="insereLocalResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="alteraLocal">
+    <part name="nome" type="xsd:string" />
+    <part name="utilizaHorarioVerao" type="xsd:int" />
+    <part name="idFusoHorario" type="xsd:int" />
+  </message>
+  <message name="alteraLocalResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="excluiLocal">
+    <part name="nome" type="xsd:string" />
+  </message>
+  <message name="excluiLocalResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="insereSetor">
+    <part name="nome" type="xsd:string" />
+  </message>
+  <message name="insereSetorResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="alteraSetor">
+    <part name="nome" type="xsd:string" />
+    <part name="novoNome" type="xsd:string" />
+  </message>
+  <message name="alteraSetorResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="excluiSetor">
+    <part name="nome" type="xsd:string" />
+  </message>
+  <message name="excluiSetorResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="insereDispositivo">
+    <part name="nome" type="xsd:string" />
+    <part name="ip" type="xsd:string" />
+    <part name="nrp" type="xsd:string" />
+    <part name="tipoIdentificacaoEmpresa" type="xsd:int" />
+    <part name="identificacaoEmpresa" type="xsd:string" />
+    <part name="local" type="xsd:string" />
+    <part name="validacaoBiometrica" type="xsd:int" />
+    <part name="cei" type="xsd:string" />
+  </message>
+  <message name="insereDispositivoResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="atualizaDispositivo">
+    <part name="nrp" type="xsd:string" />
+    <part name="nome" type="xsd:string" />
+    <part name="ip" type="xsd:string" />
+    <part name="tipoIdentificacaoEmpresa" type="xsd:int" />
+    <part name="identificacaoEmpresa" type="xsd:string" />
+    <part name="local" type="xsd:string" />
+    <part name="validacaoBiometrica" type="xsd:int" />
+    <part name="cei" type="xsd:string" />
+  </message>
+  <message name="atualizaDispositivoResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="excluiDispositivo">
+    <part name="nrp" type="xsd:string" />
+  </message>
+  <message name="excluiDispositivoResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="obterDispositivo">
+    <part name="nrp" type="xsd:string" />
+  </message>
+  <message name="obterDispositivoResponse">
+    <part name="return" type="tns:dispositivoRemoteOut" />
+  </message>
+  <message name="DigiconBusinessViolation">
+    <part name="fault" element="tns:DigiconBusinessViolation" />
+  </message>
+  <message name="obterDispositivoXML">
+    <part name="nrp" type="xsd:string" />
+  </message>
+  <message name="obterDispositivoXMLResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="obterColaboradorXMLByNrp">
+    <part name="nrp" type="xsd:string" />
+  </message>
+  <message name="obterColaboradorXMLByNrpResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="obterColaboradorXMLSemLigacao" />
+  <message name="obterColaboradorXMLSemLigacaoResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="obterDispositivoXMLByPis">
+    <part name="pis" type="xsd:string" />
+  </message>
+  <message name="obterDispositivoXMLByPisResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="insereColaborador">
+    <part name="nome" type="xsd:string" />
+    <part name="matricula" type="xsd:string" />
+    <part name="pis" type="xsd:string" />
+    <part name="mifare" type="xsd:string" />
+    <part name="codigoBarras" type="xsd:string" />
+    <part name="rfid" type="xsd:string" />
+    <part name="tipoIdentificacaoEmpresa" type="xsd:int" />
+    <part name="identificacaoEmpresa" type="xsd:string" />
+    <part name="setor" type="xsd:string" />
+    <part name="permiteTeclado" type="xsd:int" />
+    <part name="cei" type="xsd:string" />
+  </message>
+  <message name="insereColaboradorResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="alteraColaborador">
+    <part name="pis" type="xsd:string" />
+    <part name="nome" type="xsd:string" />
+    <part name="matricula" type="xsd:string" />
+    <part name="mifare" type="xsd:string" />
+    <part name="codigoBarras" type="xsd:string" />
+    <part name="rfid" type="xsd:string" />
+    <part name="tipoIdentificacaoEmpresa" type="xsd:int" />
+    <part name="identificacaoEmpresa" type="xsd:string" />
+    <part name="setor" type="xsd:string" />
+    <part name="permiteTeclado" type="xsd:int" />
+    <part name="cei" type="xsd:string" />
+  </message>
+  <message name="alteraColaboradorResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="excluiColaborador">
+    <part name="pis" type="xsd:string" />
+  </message>
+  <message name="excluiColaboradorResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="obterColaboradorXML">
+    <part name="pis" type="xsd:string" />
+  </message>
+  <message name="obterColaboradorXMLResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="obterColaborador">
+    <part name="pis" type="xsd:string" />
+  </message>
+  <message name="obterColaboradorResponse">
+    <part name="return" type="tns:colaboradorRemoteOut" />
+  </message>
+  <message name="obterBiometria">
+    <part name="pis" type="xsd:string" />
+  </message>
+  <message name="obterBiometriaResponse">
+    <part name="return" type="tns:biometriaRemoteOut" />
+  </message>
+  <message name="obterColaboradores">
+    <part name="nome" type="xsd:string" />
+    <part name="pis" type="xsd:string" />
+    <part name="inicio" type="xsd:int" />
+    <part name="fim" type="xsd:int" />
+  </message>
+  <message name="obterColaboradoresResponse">
+    <part name="return" type="tns:colaboradoresConsultaRemoteOutArray" />
+  </message>
+  <message name="obterColaboradoresXML">
+    <part name="nome" type="xsd:string" />
+    <part name="pis" type="xsd:string" />
+    <part name="inicio" type="xsd:int" />
+    <part name="fim" type="xsd:int" />
+  </message>
+  <message name="obterColaboradoresXMLResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="gravarBiometria">
+    <part name="pis" type="xsd:string" />
+    <part name="biometriaSagem1" type="xsd:base64Binary" />
+    <part name="biometriaSagem2" type="xsd:base64Binary" />
+  </message>
+  <message name="gravarBiometriaResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="gravarBiometriaHex">
+    <part name="pis" type="xsd:string" />
+    <part name="biometriaSagem1" type="xsd:string" />
+    <part name="biometriaSagem2" type="xsd:string" />
+  </message>
+  <message name="gravarBiometriaHexResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="gravarCartao">
+    <part name="pis" type="xsd:string" />
+    <part name="tecnologia" type="xsd:int" />
+    <part name="cartao" type="xsd:string" />
+  </message>
+  <message name="gravarCartaoResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="insereEmpresa">
+    <part name="nome" type="xsd:string" />
+    <part name="cei" type="xsd:string" />
+    <part name="cidade" type="xsd:string" />
+    <part name="siglaEstado" type="xsd:string" />
+    <part name="tipoIdentificacaoEmpresa" type="xsd:int" />
+    <part name="identificacaoEmpresa" type="xsd:string" />
+  </message>
+  <message name="insereEmpresaResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="alteraEmpresa">
+    <part name="tipoIdentificacaoEmpresa" type="xsd:int" />
+    <part name="identificacaoEmpresa" type="xsd:string" />
+    <part name="nome" type="xsd:string" />
+    <part name="cei" type="xsd:string" />
+    <part name="cidade" type="xsd:string" />
+    <part name="siglaEstado" type="xsd:string" />
+  </message>
+  <message name="alteraEmpresaResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="excluiEmpresa">
+    <part name="tipoIdentificacaoEmpresa" type="xsd:int" />
+    <part name="identificacaoEmpresa" type="xsd:string" />
+    <part name="cei" type="xsd:string" />
+  </message>
+  <message name="excluiEmpresaResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="obterEmpresa">
+    <part name="tipoIdentificacaoEmpresa" type="xsd:int" />
+    <part name="identificacaoEmpresa" type="xsd:string" />
+    <part name="cei" type="xsd:string" />
+  </message>
+  <message name="obterEmpresaResponse">
+    <part name="return" type="tns:empresaRemoteOut" />
+  </message>
+  <message name="obterEmpresaXML">
+    <part name="tipoIdentificacaoEmpresa" type="xsd:int" />
+    <part name="identificacaoEmpresa" type="xsd:string" />
+    <part name="cei" type="xsd:string" />
+  </message>
+  <message name="obterEmpresaXMLResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="adicionaRelacionamentoColaboradorDispositivo">
+    <part name="nrp" type="xsd:string" />
+    <part name="pis" type="xsd:string" />
+  </message>
+  <message name="adicionaRelacionamentoColaboradorDispositivoResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="removeRelacionamentoColaboradorDispositivo">
+    <part name="nrp" type="xsd:string" />
+    <part name="pis" type="xsd:string" />
+  </message>
+  <message name="removeRelacionamentoColaboradorDispositivoResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="obterLOG">
+    <part name="nrp" type="xsd:string" />
+    <part name="dataInicial" type="xsd:string" />
+    <part name="dataFinal" type="xsd:string" />
+  </message>
+  <message name="obterLOGResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="obterAFD">
+    <part name="mrp" type="xsd:string" />
+    <part name="dataInicial" type="xsd:string" />
+    <part name="dataFinal" type="xsd:string" />
+  </message>
+  <message name="obterAFDResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="obterAFDNSR">
+    <part name="nrp" type="xsd:string" />
+    <part name="nsr" type="xsd:int" />
+  </message>
+  <message name="obterAFDNSRResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="obterMonitoramento">
+    <part name="nome" type="xsd:string" />
+    <part name="nrp" type="xsd:string" />
+    <part name="status" type="xsd:int" />
+    <part name="dataInicialInclusao" type="xsd:string" />
+    <part name="dataFinalInclusao" type="xsd:string" />
+    <part name="dataInicialExecucao" type="xsd:string" />
+    <part name="dataFinalExecucao" type="xsd:string" />
+  </message>
+  <message name="obterMonitoramentoResponse">
+    <part name="return" type="tns:monitoringRemoteOutArray" />
+  </message>
+  <message name="obterMonitoramentoXML">
+    <part name="nome" type="xsd:string" />
+    <part name="nrp" type="xsd:string" />
+    <part name="status" type="xsd:int" />
+    <part name="dataInicialInclusao" type="xsd:string" />
+    <part name="dataFinalInclusao" type="xsd:string" />
+    <part name="dataInicialExecucao" type="xsd:string" />
+    <part name="dataFinalExecucao" type="xsd:string" />
+  </message>
+  <message name="obterMonitoramentoXMLResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="atualizaDataHora">
+    <part name="nrp" type="xsd:string" />
+  </message>
+  <message name="atualizaDataHoraResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="ativaInativaColaborador">
+    <part name="pis" type="xsd:string" />
+    <part name="status" type="xsd:int" />
+  </message>
+  <message name="ativaInativaColaboradorResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <portType name="DigiNetWS">
+    <operation name="insereLocal" parameterOrder="nome utilizaHorarioVerao idFusoHorario">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/insereLocalRequest" message="tns:insereLocal" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/insereLocalResponse" message="tns:insereLocalResponse" />
+    </operation>
+    <operation name="alteraLocal" parameterOrder="nome utilizaHorarioVerao idFusoHorario">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/alteraLocalRequest" message="tns:alteraLocal" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/alteraLocalResponse" message="tns:alteraLocalResponse" />
+    </operation>
+    <operation name="excluiLocal">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/excluiLocalRequest" message="tns:excluiLocal" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/excluiLocalResponse" message="tns:excluiLocalResponse" />
+    </operation>
+    <operation name="insereSetor">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/insereSetorRequest" message="tns:insereSetor" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/insereSetorResponse" message="tns:insereSetorResponse" />
+    </operation>
+    <operation name="alteraSetor" parameterOrder="nome novoNome">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/alteraSetorRequest" message="tns:alteraSetor" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/alteraSetorResponse" message="tns:alteraSetorResponse" />
+    </operation>
+    <operation name="excluiSetor">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/excluiSetorRequest" message="tns:excluiSetor" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/excluiSetorResponse" message="tns:excluiSetorResponse" />
+    </operation>
+    <operation name="insereDispositivo" parameterOrder="nome ip nrp tipoIdentificacaoEmpresa identificacaoEmpresa local validacaoBiometrica cei">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/insereDispositivoRequest" message="tns:insereDispositivo" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/insereDispositivoResponse" message="tns:insereDispositivoResponse" />
+    </operation>
+    <operation name="atualizaDispositivo" parameterOrder="nrp nome ip tipoIdentificacaoEmpresa identificacaoEmpresa local validacaoBiometrica cei">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/atualizaDispositivoRequest" message="tns:atualizaDispositivo" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/atualizaDispositivoResponse" message="tns:atualizaDispositivoResponse" />
+    </operation>
+    <operation name="excluiDispositivo">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/excluiDispositivoRequest" message="tns:excluiDispositivo" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/excluiDispositivoResponse" message="tns:excluiDispositivoResponse" />
+    </operation>
+    <operation name="obterDispositivo">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterDispositivoRequest" message="tns:obterDispositivo" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterDispositivoResponse" message="tns:obterDispositivoResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterDispositivo/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="obterDispositivoXML">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterDispositivoXMLRequest" message="tns:obterDispositivoXML" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterDispositivoXMLResponse" message="tns:obterDispositivoXMLResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterDispositivoXML/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="obterColaboradorXMLByNrp">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradorXMLByNrpRequest" message="tns:obterColaboradorXMLByNrp" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradorXMLByNrpResponse" message="tns:obterColaboradorXMLByNrpResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradorXMLByNrp/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="obterColaboradorXMLSemLigacao">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradorXMLSemLigacaoRequest" message="tns:obterColaboradorXMLSemLigacao" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradorXMLSemLigacaoResponse" message="tns:obterColaboradorXMLSemLigacaoResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradorXMLSemLigacao/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="obterDispositivoXMLByPis">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterDispositivoXMLByPisRequest" message="tns:obterDispositivoXMLByPis" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterDispositivoXMLByPisResponse" message="tns:obterDispositivoXMLByPisResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterDispositivoXMLByPis/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="insereColaborador" parameterOrder="nome matricula pis mifare codigoBarras rfid tipoIdentificacaoEmpresa identificacaoEmpresa setor permiteTeclado cei">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/insereColaboradorRequest" message="tns:insereColaborador" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/insereColaboradorResponse" message="tns:insereColaboradorResponse" />
+    </operation>
+    <operation name="alteraColaborador" parameterOrder="pis nome matricula mifare codigoBarras rfid tipoIdentificacaoEmpresa identificacaoEmpresa setor permiteTeclado cei">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/alteraColaboradorRequest" message="tns:alteraColaborador" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/alteraColaboradorResponse" message="tns:alteraColaboradorResponse" />
+    </operation>
+    <operation name="excluiColaborador">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/excluiColaboradorRequest" message="tns:excluiColaborador" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/excluiColaboradorResponse" message="tns:excluiColaboradorResponse" />
+    </operation>
+    <operation name="obterColaboradorXML">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradorXMLRequest" message="tns:obterColaboradorXML" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradorXMLResponse" message="tns:obterColaboradorXMLResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradorXML/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="obterColaborador">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradorRequest" message="tns:obterColaborador" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradorResponse" message="tns:obterColaboradorResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaborador/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="obterBiometria">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterBiometriaRequest" message="tns:obterBiometria" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterBiometriaResponse" message="tns:obterBiometriaResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterBiometria/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="obterColaboradores" parameterOrder="nome pis inicio fim">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradoresRequest" message="tns:obterColaboradores" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradoresResponse" message="tns:obterColaboradoresResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradores/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="obterColaboradoresXML" parameterOrder="nome pis inicio fim">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradoresXMLRequest" message="tns:obterColaboradoresXML" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradoresXMLResponse" message="tns:obterColaboradoresXMLResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterColaboradoresXML/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="gravarBiometria" parameterOrder="pis biometriaSagem1 biometriaSagem2">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/gravarBiometriaRequest" message="tns:gravarBiometria" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/gravarBiometriaResponse" message="tns:gravarBiometriaResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/gravarBiometria/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="gravarBiometriaHex" parameterOrder="pis biometriaSagem1 biometriaSagem2">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/gravarBiometriaHexRequest" message="tns:gravarBiometriaHex" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/gravarBiometriaHexResponse" message="tns:gravarBiometriaHexResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/gravarBiometriaHex/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="gravarCartao" parameterOrder="pis tecnologia cartao">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/gravarCartaoRequest" message="tns:gravarCartao" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/gravarCartaoResponse" message="tns:gravarCartaoResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/gravarCartao/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="insereEmpresa" parameterOrder="nome cei cidade siglaEstado tipoIdentificacaoEmpresa identificacaoEmpresa">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/insereEmpresaRequest" message="tns:insereEmpresa" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/insereEmpresaResponse" message="tns:insereEmpresaResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/insereEmpresa/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="alteraEmpresa" parameterOrder="tipoIdentificacaoEmpresa identificacaoEmpresa nome cei cidade siglaEstado">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/alteraEmpresaRequest" message="tns:alteraEmpresa" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/alteraEmpresaResponse" message="tns:alteraEmpresaResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/alteraEmpresa/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="excluiEmpresa" parameterOrder="tipoIdentificacaoEmpresa identificacaoEmpresa cei">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/excluiEmpresaRequest" message="tns:excluiEmpresa" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/excluiEmpresaResponse" message="tns:excluiEmpresaResponse" />
+    </operation>
+    <operation name="obterEmpresa" parameterOrder="tipoIdentificacaoEmpresa identificacaoEmpresa cei">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterEmpresaRequest" message="tns:obterEmpresa" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterEmpresaResponse" message="tns:obterEmpresaResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterEmpresa/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="obterEmpresaXML" parameterOrder="tipoIdentificacaoEmpresa identificacaoEmpresa cei">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterEmpresaXMLRequest" message="tns:obterEmpresaXML" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterEmpresaXMLResponse" message="tns:obterEmpresaXMLResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterEmpresaXML/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="adicionaRelacionamentoColaboradorDispositivo" parameterOrder="nrp pis">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/adicionaRelacionamentoColaboradorDispositivoRequest" message="tns:adicionaRelacionamentoColaboradorDispositivo" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/adicionaRelacionamentoColaboradorDispositivoResponse" message="tns:adicionaRelacionamentoColaboradorDispositivoResponse" />
+    </operation>
+    <operation name="removeRelacionamentoColaboradorDispositivo" parameterOrder="nrp pis">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/removeRelacionamentoColaboradorDispositivoRequest" message="tns:removeRelacionamentoColaboradorDispositivo" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/removeRelacionamentoColaboradorDispositivoResponse" message="tns:removeRelacionamentoColaboradorDispositivoResponse" />
+    </operation>
+    <operation name="obterLOG" parameterOrder="nrp dataInicial dataFinal">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterLOGRequest" message="tns:obterLOG" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterLOGResponse" message="tns:obterLOGResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterLOG/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="obterAFD" parameterOrder="mrp dataInicial dataFinal">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterAFDRequest" message="tns:obterAFD" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterAFDResponse" message="tns:obterAFDResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterAFD/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="obterAFDNSR" parameterOrder="nrp nsr">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterAFDNSRRequest" message="tns:obterAFDNSR" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterAFDNSRResponse" message="tns:obterAFDNSRResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterAFDNSR/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="obterMonitoramento" parameterOrder="nome nrp status dataInicialInclusao dataFinalInclusao dataInicialExecucao dataFinalExecucao">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterMonitoramentoRequest" message="tns:obterMonitoramento" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterMonitoramentoResponse" message="tns:obterMonitoramentoResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterMonitoramento/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="obterMonitoramentoXML" parameterOrder="nome nrp status dataInicialInclusao dataFinalInclusao dataInicialExecucao dataFinalExecucao">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterMonitoramentoXMLRequest" message="tns:obterMonitoramentoXML" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterMonitoramentoXMLResponse" message="tns:obterMonitoramentoXMLResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/obterMonitoramentoXML/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="atualizaDataHora">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/atualizaDataHoraRequest" message="tns:atualizaDataHora" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/atualizaDataHoraResponse" message="tns:atualizaDataHoraResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/atualizaDataHora/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+    <operation name="ativaInativaColaborador" parameterOrder="pis status">
+      <input wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/ativaInativaColaboradorRequest" message="tns:ativaInativaColaborador" />
+      <output wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/ativaInativaColaboradorResponse" message="tns:ativaInativaColaboradorResponse" />
+      <fault wsam:Action="http://webservice.diginet.digicon.com.br/DigiNetWS/ativaInativaColaborador/Fault/DigiconBusinessViolation" name="DigiconBusinessViolation" message="tns:DigiconBusinessViolation" />
+    </operation>
+  </portType>
+  <binding name="DigiNetWSPortBinding" type="tns:DigiNetWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="insereLocal">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+    </operation>
+    <operation name="alteraLocal">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+    </operation>
+    <operation name="excluiLocal">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+    </operation>
+    <operation name="insereSetor">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+    </operation>
+    <operation name="alteraSetor">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+    </operation>
+    <operation name="excluiSetor">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+    </operation>
+    <operation name="insereDispositivo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+    </operation>
+    <operation name="atualizaDispositivo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+    </operation>
+    <operation name="excluiDispositivo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+    </operation>
+    <operation name="obterDispositivo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obterDispositivoXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obterColaboradorXMLByNrp">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obterColaboradorXMLSemLigacao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obterDispositivoXMLByPis">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="insereColaborador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+    </operation>
+    <operation name="alteraColaborador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+    </operation>
+    <operation name="excluiColaborador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+    </operation>
+    <operation name="obterColaboradorXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obterColaborador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obterBiometria">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obterColaboradores">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obterColaboradoresXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="gravarBiometria">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="gravarBiometriaHex">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="gravarCartao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="insereEmpresa">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="alteraEmpresa">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="excluiEmpresa">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+    </operation>
+    <operation name="obterEmpresa">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obterEmpresaXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="adicionaRelacionamentoColaboradorDispositivo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+    </operation>
+    <operation name="removeRelacionamentoColaboradorDispositivo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+    </operation>
+    <operation name="obterLOG">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obterAFD">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obterAFDNSR">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obterMonitoramento">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obterMonitoramentoXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="atualizaDataHora">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+    <operation name="ativaInativaColaborador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://webservice.diginet.digicon.com.br/" />
+      </output>
+      <fault name="DigiconBusinessViolation">
+        <soap:fault use="literal" name="DigiconBusinessViolation" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="DigiNetWSService">
+    <port name="DigiNetWSPort" binding="tns:DigiNetWSPortBinding">
+      <soap:address location="http://10.104.30.12:8080/diginet2/diginet-ws" />
+    </port>
+  </service>
+</definitions>

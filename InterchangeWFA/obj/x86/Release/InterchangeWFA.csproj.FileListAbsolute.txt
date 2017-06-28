@@ -1,0 +1,11 @@
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\bin\Release\InterchangeWFA.exe.config
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\bin\Release\InterchangeWFA.exe
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\bin\Release\InterchangeWFA.XmlSerializers.dll
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\bin\Release\InterchangeWFA.pdb
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\bin\Release\dfs-10.4.0.0.dll
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\obj\x86\Release\InterchangeWFA.frmMain.resources
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\obj\x86\Release\InterchangeWFA.Properties.Resources.resources
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\obj\x86\Release\InterchangeWFA.csproj.GenerateResource.Cache
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\obj\x86\Release\InterchangeWFA.exe
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\obj\x86\Release\InterchangeWFA.pdb
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\obj\x86\Release\InterchangeWFA.XmlSerializers.dll

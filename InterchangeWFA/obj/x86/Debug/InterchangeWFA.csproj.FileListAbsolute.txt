@@ -1,0 +1,9 @@
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\bin\Debug\InterchangeWFA.exe.config
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\bin\Debug\InterchangeWFA.exe
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\bin\Debug\InterchangeWFA.pdb
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\bin\Debug\dfs-10.4.0.0.dll
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\obj\x86\Debug\InterchangeWFA.frmMain.resources
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\obj\x86\Debug\InterchangeWFA.Properties.Resources.resources
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\obj\x86\Debug\InterchangeWFA.csproj.GenerateResource.Cache
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\obj\x86\Debug\InterchangeWFA.exe
+C:\Trabalho\Projeto\Nicaragua\Interchange\InterchangeWFA\InterchangeWFA\obj\x86\Debug\InterchangeWFA.pdb
